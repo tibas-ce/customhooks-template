@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { BASE_URL } from "./constants/constants";
 import axios from "axios";
-
+import {Title,NameContainer,PostContainer } from './style'
+import { GlobalStyle } from './GlobalStyle'
+import { Header } from './components/Header/Header'
+import { Card } from './components/Card/Card'
 function App() {
   const [nomeUsuarios, setNomeUsuarios] = useState([]);
   const [postagens, setPostagens] = useState([]);
@@ -16,7 +19,7 @@ function App() {
         console.log(error);
       });
   }, []);
-  
+
 
   useEffect(() => {
     axios
@@ -31,18 +34,41 @@ function App() {
 
   return (
     <div>
-      <p>Exercício 1</p>
-      {nomeUsuarios.map((usuario) => {
-        return <p key={usuario.id}>{usuario.name}</p>;
-      })}
+      <GlobalStyle />
+      <Header />
+      <Title>Nomes dos usuários</Title>
+      <NameContainer>
+        {nomeUsuarios.map((usuario) => {
+          return(
+          <Card 
+          key={usuario.id} 
+          text={usuario.name} 
+          backgroudColor={'nome'}
+          textColor={'nome'}
+          />)
+        })}
+      </NameContainer>
+
       <hr />
-      <p>Exercício 2</p>
+      <Title>Comentários dos usuários</Title>
+      <PostContainer>
+
       {postagens.map((post) => {
-        return <p key={post.id}>{post.body}</p>;
+        //console.log(post);
+        return(
+          <Card 
+          key={post.id} 
+          text={post.body} 
+          backgroudColor={'#1dc690'}
+          textColor={'#ffffff'}
+          />)
       })}
+      </PostContainer>
     </div>
   );
 }
 
 export default App;
+
+
 
