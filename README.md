@@ -6,4 +6,4 @@ cd customhooks
 npm rum start
 ```
 
-Link do codesandbox: https://codesandbox.io/s/custom-hooks-template-770wxp?file=/src/constants/constants.js
+Link do codesandbox: https://codesandbox.io/s/custom-hooks-template-forked-ejj1l2?file=/src/App.js
